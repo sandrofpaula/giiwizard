@@ -35,11 +35,12 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="container">
     <div class="site-about">
         <div class="form-group">
-            <label for="module-name-input">Enter Module Name</label>
+            <h1 class="modal-title"><span class="badge bg-danger ">***Gii Wizard***</span></h1>          
+            <label for="module-name-input">Insira o nome do módulo</label>
             <?= Html::textInput('moduleName', '', ['id' => 'module-name-input', 'class' => 'form-control', 'maxlength' => true, 'placeholder' => 'Enter module name']) ?>
         </div>
 
-        <h2>Database Tables</h2>
+        <h2>Tabelas de banco de dados</h2>
         <ul class="list-group">
             <?php foreach ($tables as $table): ?>
                 <li class="list-group-item">
@@ -52,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div id="module-result" class="mt-3">
             <!-- O resultado será exibido aqui -->
         </div>
-        <button id="copy-button" class="btn btn-primary mt-3" style="display:none;">Copy</button>
+        <button id="copy-button" class="btn btn-primary mt-3" style="display:none;">Copiar</button>
     </div>
 </div>
 
@@ -102,11 +103,8 @@ function updateResult() {
             '<div class="form-group"><label>Search Model Class:</label> <input type="text" class="form-control" value="' + searchModelClass + '" readonly></div>' +
             '<div class="form-group"><label>Controller Class:</label> <input type="text" class="form-control" value="' + controllerClass + '" readonly></div>' +
             '<div class="form-group"><label>View Path:</label> <input type="text" class="form-control" value="' + viewPath + '" readonly></div>';
-
-
-
-
-    if (moduleName && selectedTable) {
+    
+            if (moduleName && selectedTable) {
  
         $('#module-result').html(resultHtml);
         $('#copy-button').show().off('click').on('click', function() {
@@ -131,7 +129,7 @@ function copyToClipboard(html) {
     document.execCommand('copy');
     window.getSelection().removeAllRanges();
     tempElement.remove();
-    alert('Copied to clipboard');
+    alert('Copiado para a área de transferência');
 }
 </script>
 </body>
