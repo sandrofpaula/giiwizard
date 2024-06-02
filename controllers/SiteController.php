@@ -125,4 +125,12 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+    public function actionCommodule()
+    {
+        return $this->render('com-module');
+    }
+    public function actionSemmodule()
+    {
+        return $this->render('sem-module');
+    }
 }
