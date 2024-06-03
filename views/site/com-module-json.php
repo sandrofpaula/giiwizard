@@ -234,7 +234,7 @@ function updateResult() {
         '<h1 class="modal-title"><span class="badge bg-warning text-dark">Model Generator</span></h1>' +
         createInputWithCopy('Model Class Name:', rightPart) +
         createInputWithCopy('Namespace:', namespace) +
-        '<h1 class="modal-title"><span class="badge bg-success">Model Generator</span></h1>' +
+        '<h1 class="modal-title"><span class="badge bg-success">CRUD Generator</span></h1>' +
         createInputWithCopy('Model Class:', modelClass) +
         createInputWithCopy('Search Model Class:', searchModelClass) +
         createInputWithCopy('Controller Class:', controllerClass) +

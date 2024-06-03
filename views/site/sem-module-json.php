@@ -214,11 +214,11 @@ function updateResult() {
     var viewPath = '@app/views/' + rightPart.toLowerCase();
 
     var resultHtml = 
-        '<h1 class="modal-title"><span class="badge bg-dark">Module Generator</span></h1>' +
+        '<h1 class="modal-title"><span class="badge bg-dark">Model Generator</span></h1>' +
         createInputWithCopy('Model Class:', modelClass) +
         createInputWithCopy('Namespace:', namespace) +
         createInputWithCopy('Selected Table:', selectedTable) +
-        '<h1 class="modal-title"><span class="badge bg-warning text-dark">Model Generator</span></h1>' +
+        '<h1 class="modal-title"><span class="badge bg-warning text-dark"> CRUD Generator</span></h1>' +
         createInputWithCopy('Search Model Class:', searchModelClass) +
         createInputWithCopy('Controller Class:', controllerClass) +
         createInputWithCopy('View Path:', viewPath);
