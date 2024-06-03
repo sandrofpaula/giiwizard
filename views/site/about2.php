@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <code><?= __FILE__ ?></code>
 </div>
 
-<!--************************************-->
+<!---->
 <?php
  // Obter a conexão com o banco de dados
  $db = Yii::$app->db;
@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="container">
     <div class="site-about">
         <div class="form-group">
-            <h1 class="modal-title"><span class="badge bg-danger ">***Gii Wizard***</span></h1>          
+            <h1 class="modal-title"><span class="badge bg-danger ">Gii Wizard</span></h1>          
             <label for="module-name-input">Insira o nome do módulo</label>
             <?= Html::textInput('moduleName', '', ['id' => 'module-name-input', 'class' => 'form-control', 'maxlength' => true, 'placeholder' => 'Enter module name']) ?>
         </div>
@@ -86,19 +86,19 @@ function updateResult() {
         var viewPath = '@app/modules/' + moduleName + '/views/' + rightPart.toLowerCase();
 
         var resultHtml = 
-            '<h1 class="modal-title"><span class="badge bg-dark ">***Module Generator***</span></h1>' +
+            '<h1 class="modal-title"><span class="badge bg-dark ">Module Generator</span></h1>' +
             
             '<div class="form-group"><label>Module Class:</label> <input type="text" class="form-control" value="app\\modules\\' + moduleName + '\\' + capitalizedModuleName + '" readonly></div>' +
             '<div class="form-group"><label>Module ID:</label> <input type="text" class="form-control" value="' + moduleName + '" readonly></div>' +
             
-            '<h1 class="modal-title"><span class="badge bg-primary">***Table Name***</span></h1>' +
+            '<h1 class="modal-title"><span class="badge bg-primary">Table Name</span></h1>' +
             '<div class="form-group"><label>Selected Table:</label> <input type="text" class="form-control" value="' + selectedTable + '" readonly></div>' +
 
-            '<h1 class="modal-title"><span class="badge bg-warning text-dark">***Model Generator***</span></h1>' +
+            '<h1 class="modal-title"><span class="badge bg-warning text-dark">Model Generator</span></h1>' +
             '<div class="form-group"><label>Model Class Name:</label> <input type="text" class="form-control" value="' + rightPart + '" readonly></div>' +
             '<div class="form-group"><label>Namespace:</label> <input type="text" class="form-control" value="' + namespace + '" readonly></div>' +
             
-            '<h1 class="modal-title"><span class="badge bg-success">***Model Generator***</span></h1>' +
+            '<h1 class="modal-title"><span class="badge bg-success">Model Generator</span></h1>' +
             '<div class="form-group"><label>Model Class:</label> <input type="text" class="form-control" value="' + modelClass + '" readonly></div>' +
             '<div class="form-group"><label>Search Model Class:</label> <input type="text" class="form-control" value="' + searchModelClass + '" readonly></div>' +
             '<div class="form-group"><label>Controller Class:</label> <input type="text" class="form-control" value="' + controllerClass + '" readonly></div>' +

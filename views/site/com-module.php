@@ -11,7 +11,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 </div>
 
-<!--************************************-->
+<!---->
 
 <?php
  // Obter a conexão com o banco de dados
@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="container">
     <div class="site-about">
         <div class="form-group">
-            <h1 class="modal-title"><span class="badge bg-danger">***Gii Wizard***</span></h1> 
+            <h1 class="modal-title"><span class="badge bg-danger">Gii Wizard</span></h1> 
             <label for="module-name-input">Insira o nome do módulo</label>
             <?= Html::textInput('moduleName', '', ['id' => 'module-name-input', 'class' => 'form-control', 'maxlength' => true, 'placeholder' => 'Enter module name']) ?>
         </div>
@@ -92,15 +92,15 @@ function updateResult() {
     var viewPath = '@app/modules/' + moduleName + '/views/' + rightPart.toLowerCase();
 
     var resultHtml = 
-        '<h1 class="modal-title"><span class="badge bg-dark">***Module Generator***</span></h1>' +
+        '<h1 class="modal-title"><span class="badge bg-dark">Module Generator</span></h1>' +
         createInputWithCopy('Module Class:', 'app\\modules\\' + moduleName + '\\' + capitalizedModuleName) +
         createInputWithCopy('Module ID:', moduleName) +
-        '<h1 class="modal-title"><span class="badge bg-primary">***Table Name***</span></h1>' +
+        '<h1 class="modal-title"><span class="badge bg-primary">Table Name</span></h1>' +
         createInputWithCopy('Selected Table:', selectedTable) +
-        '<h1 class="modal-title"><span class="badge bg-warning text-dark">***Model Generator***</span></h1>' +
+        '<h1 class="modal-title"><span class="badge bg-warning text-dark">Model Generator</span></h1>' +
         createInputWithCopy('Model Class Name:', rightPart) +
         createInputWithCopy('Namespace:', namespace) +
-        '<h1 class="modal-title"><span class="badge bg-success">***Model Generator***</span></h1>' +
+        '<h1 class="modal-title"><span class="badge bg-success">Model Generator</span></h1>' +
         createInputWithCopy('Model Class:', modelClass) +
         createInputWithCopy('Search Model Class:', searchModelClass) +
         createInputWithCopy('Controller Class:', controllerClass) +

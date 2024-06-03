@@ -133,4 +133,12 @@ class SiteController extends Controller
     {
         return $this->render('sem-module');
     }
+    public function actionCommodulejson()
+    {
+        return $this->render('com-module-json');
+    }
+    public function actionSemmodulejson()
+    {
+        return $this->render('sem-module-json');
+    }
 }

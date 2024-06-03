@@ -24,13 +24,10 @@ $this->title = 'Gii Wizard!';
         <div class="row">
             <div class="col-lg-4 mb-5">
                 <h2>Sistema com Módulos</h2>
-
-                <!-- <p>Módulos em Yii2 são como sub-aplicações dentro da aplicação principal. 
-                    Cada módulo pode ter seus próprios controladores, modelos, visões, e até configurações específicas. 
-                    Usar módulos é útil para projetos grandes ou complexos, 
-                    onde diferentes partes do sistema precisam ser isoladas logicamente.</p> -->
-
                 <p><?php echo Html::a('Gii Wizard para Sistema com Módulos', ['/site/commodule'], ['class' => 'btn btn-outline-secondary']);?></p>
+                
+                <p><?php echo Html::a('Gii Wizard para Sistema com Módulos (JSON)', ['/site/commodulejson'], ['class' => 'btn btn-outline-secondary']);?></p>
+                
                 <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#withModulesModal">
                 <i class="fas fa-info-circle"></i> Sistema Com Módulos
                 </button>
@@ -40,12 +37,10 @@ $this->title = 'Gii Wizard!';
             <div class="col-lg-4 mb-5">
                 <h2>Sistema sem Módulos</h2>
 
-                <!-- <p>Módulos em Yii2 são como sub-aplicações dentro da aplicação principal. 
-                    Cada módulo pode ter seus próprios controladores, modelos, visões, e até configurações específicas. 
-                    Usar módulos é útil para projetos grandes ou complexos, 
-                    onde diferentes partes do sistema precisam ser isoladas logicamente.</p> -->
-
                 <p><?php echo Html::a('Gii Wizard para Sistema sem Módulos', ['/site/semmodule'], ['class' => 'btn btn-outline-primary']);?></p>
+
+                <p><?php echo Html::a('Gii Wizard para Sistema sem Módulos (JSON)', ['/site/semmodulejson'], ['class' => 'btn btn-outline-primary']);?></p>
+                
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#noModulesModal">
                 <i class="fas fa-info-circle"></i> Sistema Sem Módulos
                 </button>
