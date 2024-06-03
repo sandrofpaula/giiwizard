@@ -40,6 +40,11 @@ $this->params['breadcrumbs'][] = $this->title;
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exemplojson">
             <i class="fas fa-info-circle"></i> Exemplo JSON
         </button>
+
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#listaTable">
+            <i class="fas fa-info-circle"></i> Listar todas as tabelas de um banco de dados em MySQL e Oracle
+        </button>
+
         <div class="form-group">
             <label for="json-input">Insira o código JSON</label>
             <textarea id="json-input" class="form-control" rows="10" placeholder='{"database": {"tables": ["tb_autores", "tb_categorias", "tb_editoras", "tb_emprestimos", "tb_livros", "tb_migration", "tb_usuario"]}}'></textarea>
@@ -86,6 +91,70 @@ $this->params['breadcrumbs'][] = $this->title;
     ]
   }
 }
+                </pre>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--  Listar todas as tabelas de um banco de dados em MySQL e Oracle, -->
+<div class="modal fade" id="listaTable" tabindex="-1" role="dialog" aria-labelledby="listaTableLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="listaTableLabel">Banco de dados em MySQL e Oracle</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Para listar todas as tabelas de um banco de dados em MySQL e Oracle, você pode utilizar as seguintes consultas SQL:</p>
+                <pre>
+Para listar todas as tabelas de um banco de dados em MySQL e Oracle, você pode utilizar as seguintes consultas SQL:
+
+### MySQL
+Para listar todas as tabelas em um banco de dados específico, utilize a consulta abaixo:
+
+```sql
+SHOW TABLES;
+```
+
+Se você quiser listar as tabelas de um banco de dados específico, você pode usar a consulta abaixo, certificando-se de substituir `seu_banco_de_dados` pelo nome do banco de dados desejado:
+
+```sql
+SHOW TABLES FROM seu_banco_de_dados;
+```
+
+### Oracle
+Para listar todas as tabelas de um esquema específico em Oracle, você pode usar a consulta abaixo:
+
+```sql
+SELECT table_name 
+FROM all_tables 
+WHERE owner = 'SEU_ESQUEMA';
+```
+
+Substitua `SEU_ESQUEMA` pelo nome do esquema desejado. Se você estiver conectado ao esquema onde as tabelas estão localizadas e quiser listar apenas suas próprias tabelas, utilize:
+
+```sql
+SELECT table_name 
+FROM user_tables;
+```
+
+Para listar todas as tabelas acessíveis ao usuário (tabelas do próprio usuário e aquelas às quais ele tem acesso), utilize:
+
+```sql
+SELECT table_name 
+FROM all_tables;
+```
+
+Essas consultas fornecem uma visão completa das tabelas disponíveis no banco de dados, seja em MySQL ou Oracle.
+
+
                 </pre>
             </div>
             <div class="modal-footer">
