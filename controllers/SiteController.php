@@ -127,18 +127,21 @@ class SiteController extends Controller
     }
     public function actionCommodule()
     {
-        return $this->render('com-module');
+        return $this->render('/giiwizard/com-module');
     }
+    
+    /* Gii wizard */
     public function actionSemmodule()
     {
-        return $this->render('sem-module');
+        return $this->render('/giiwizard/sem-module');
     }
     public function actionCommodulejson()
     {
-        return $this->render('com-module-json');
+        return $this->render('/giiwizard/com-module-json');
     }
     public function actionSemmodulejson()
     {
-        return $this->render('sem-module-json');
+        return $this->render('/giiwizard/sem-module-json');
     }
+     /* Gii wizard */
 }
