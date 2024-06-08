@@ -100,7 +100,6 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 </div>
 
-
 <!--  Listar todas as tabelas de um banco de dados em MySQL e Oracle, -->
 <div class="modal fade" id="listaTable" tabindex="-1" role="dialog" aria-labelledby="listaTableLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
@@ -163,7 +162,7 @@ Essas consultas fornecem uma visão completa das tabelas disponíveis no banco d
         </div>
     </div>
 </div>
-
+<!--  Listar todas as tabelas de um banco de dados em MySQL e Oracle, -->
 <!-- jQuery and Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
@@ -215,10 +214,11 @@ function updateResult() {
 
     var resultHtml = 
         '<h1 class="modal-title"><span class="badge bg-dark">Model Generator</span></h1>' +
-        createInputWithCopy('Model Class:', modelClass) +
+        createInputWithCopyAndToggle('Model Class Name:', rightPart) +
+        createInputWithCopyAndToggle('Model Class:', modelClass) +
         createInputWithCopy('Namespace:', namespace) +
         createInputWithCopy('Selected Table:', selectedTable) +
-        '<h1 class="modal-title"><span class="badge bg-warning text-dark"> CRUD Generator</span></h1>' +
+        '<h1 class="modal-title"><span class="badge bg-warning text-dark">CRUD Generator</span></h1>' +
         createInputWithCopy('Search Model Class:', searchModelClass) +
         createInputWithCopy('Controller Class:', controllerClass) +
         createInputWithCopy('View Path:', viewPath);
@@ -251,6 +251,20 @@ function createInputWithCopy(label, value) {
            '</div>';
 }
 
+function createInputWithCopyAndToggle(label, value) {
+    var inputId = label.replace(/\s+/g, '-').toLowerCase() + '-' + Math.random().toString(36).substr(2, 5);
+    return '<div class="form-group">' +
+               '<label>' + label + '</label>' +
+               '<div class="input-group">' +
+                   '<input type="text" class="form-control toggle-target" id="' + inputId + '" value="' + value + '" readonly>' +
+                   '<div class="input-group-append">' +
+                       '<button class="btn btn-outline-secondary copy-button" type="button" data-target="' + inputId + '">Copiar</button>' +
+                       (label === 'Model Class Name:' ? '<button class="btn btn-outline-secondary toggle-case-button" type="button" data-target="' + inputId + '">Alternar (Aa-aA)</button>' : '') +
+                   '</div>' +
+               '</div>' +
+           '</div>';
+}
+
 $(document).on('click', '.copy-button', function() {
     var targetInputId = $(this).data('target');
     var targetInput = document.getElementById(targetInputId);
@@ -258,6 +272,31 @@ $(document).on('click', '.copy-button', function() {
     document.execCommand('copy');
     
     showAlert('Copiado: ' + targetInput.value);
+});
+
+$(document).on('click', '.toggle-case-button', function() {
+    var targetInputId = $(this).data('target');
+    var targetInput = document.getElementById(targetInputId);
+    var currentValue = targetInput.value;
+
+    var newValue;
+    if (currentValue === currentValue.toUpperCase()) {
+        newValue = capitalizeFirstLetter(currentValue.toLowerCase());
+    } else {
+        newValue = currentValue.toUpperCase();
+    }
+
+    targetInput.value = newValue;
+
+    // Atualizar o valor correspondente no campo Model Class
+    var modelClassInput = $('.toggle-target').filter(function() {
+        return $(this).val().includes(currentValue);
+    });
+
+    if (modelClassInput.length > 0) {
+        var newModelClassValue = modelClassInput.val().replace(currentValue, newValue);
+        modelClassInput.val(newModelClassValue);
+    }
 });
 
 function copyAll() {

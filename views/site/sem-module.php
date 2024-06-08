@@ -11,7 +11,6 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 </div>
 
-<!---->
 <?php
  // Obter a conexão com o banco de dados
  $db = Yii::$app->db;
@@ -72,6 +71,8 @@ function updateResult() {
     var capitalizedModuleName = moduleName.charAt(0).toUpperCase() + moduleName.slice(1);
     var selectedTable = $('input[name="selectedTable"]:checked').val();
 
+    if (!selectedTable) return;
+
     var parts = selectedTable.split('_');
     var rightPart = parts.length > 1 ? parts[1].toUpperCase() : selectedTable.toUpperCase();
 
@@ -86,10 +87,10 @@ function updateResult() {
         '<h1 class="modal-title"><span class="badge bg-primary">Table Name</span></h1>' +
         createInputWithCopy('Selected Table:', selectedTable) +
         '<h1 class="modal-title"><span class="badge bg-warning text-dark">Model Generator</span></h1>' +
-        createInputWithCopy('Model Class Name:', rightPart) +
+        createInputWithCopyAndToggle('Model Class Name:', rightPart) +
+        createInputWithCopyAndToggle('Model Class:', modelClass) +
         createInputWithCopy('Namespace:', namespace) +
         '<h1 class="modal-title"><span class="badge bg-success">CRUD Generator</span></h1>' +
-        createInputWithCopy('Model Class:', modelClass) +
         createInputWithCopy('Search Model Class:', searchModelClass) +
         createInputWithCopy('Controller Class:', controllerClass) +
         createInputWithCopy('View Path:', viewPath);
@@ -122,6 +123,20 @@ function createInputWithCopy(label, value) {
            '</div>';
 }
 
+function createInputWithCopyAndToggle(label, value) {
+    var inputId = label.replace(/\s+/g, '-').toLowerCase() + '-' + Math.random().toString(36).substr(2, 5);
+    return '<div class="form-group">' +
+               '<label>' + label + '</label>' +
+               '<div class="input-group">' +
+                   '<input type="text" class="form-control toggle-target" id="' + inputId + '" value="' + value + '" readonly>' +
+                   '<div class="input-group-append">' +
+                       '<button class="btn btn-outline-secondary copy-button" type="button" data-target="' + inputId + '">Copiar</button>' +
+                       (label === 'Model Class Name:' ? '<button class="btn btn-outline-secondary toggle-case-button" type="button" data-target="' + inputId + '">Alternar (Aa-aA)</button>' : '') +
+                   '</div>' +
+               '</div>' +
+           '</div>';
+}
+
 $(document).on('click', '.copy-button', function() {
     var targetInputId = $(this).data('target');
     var targetInput = document.getElementById(targetInputId);
@@ -131,13 +146,39 @@ $(document).on('click', '.copy-button', function() {
     showAlert('Copiado: ' + targetInput.value);
 });
 
+$(document).on('click', '.toggle-case-button', function() {
+    var targetInputId = $(this).data('target');
+    var targetInput = document.getElementById(targetInputId);
+    var currentValue = targetInput.value;
+
+    var newValue;
+    if (currentValue === currentValue.toUpperCase()) {
+        newValue = capitalizeFirstLetter(currentValue.toLowerCase());
+    } else {
+        newValue = currentValue.toUpperCase();
+    }
+
+    targetInput.value = newValue;
+
+    // Atualizar o valor correspondente no campo Model Class
+    var modelClassInput = $('.toggle-target').filter(function() {
+        return $(this).val().includes(currentValue);
+    });
+
+    if (modelClassInput.length > 0) {
+        var newModelClassValue = modelClassInput.val().replace(currentValue, newValue);
+        modelClassInput.val(newModelClassValue);
+    }
+});
+
 function copyAll() {
-    var allText = '';
+    var allValues = [];
     $('#module-result .form-group').each(function() {
         var label = $(this).find('label').text();
         var value = $(this).find('input[type="text"]').val();
-        allText += label + '\n' + value + '\n';
+        allValues.push(label + ' ' + value);
     });
+    var allText = allValues.join('\n');
     
     var tempInput = $('<textarea>');
     $('body').append(tempInput);
