@@ -45,6 +45,12 @@ $this->title = 'Gii Wizard!';
                 <i class="fas fa-info-circle"></i> Sistema Sem Módulos
                 </button>
             </div>
+            <div class="col-lg-4 mb-5">
+                <h2>Código Extra</h2>
+
+                <p><?php echo Html::a('botão copiar', ['/site/codigoextra'], ['class' => 'btn btn-outline-primary']);?></p>
+
+            </div>
         </div>
 
     </div>

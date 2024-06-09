@@ -143,5 +143,9 @@ class SiteController extends Controller
     {
         return $this->render('/giiwizard/sem-module-json');
     }
+    public function actionCodigoextra()
+    {
+        return $this->render('/giiwizard/codigo-extra');
+    }
      /* Gii wizard */
 }
