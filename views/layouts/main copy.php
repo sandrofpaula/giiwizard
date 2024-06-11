@@ -9,7 +9,6 @@ use yii\bootstrap5\Breadcrumbs;
 use yii\bootstrap5\Html;
 use yii\bootstrap5\Nav;
 use yii\bootstrap5\NavBar;
-use yii\helpers\Url;
 
 AppAsset::register($this);
 
@@ -19,8 +18,6 @@ $this->registerMetaTag(['name' => 'viewport', 'content' => 'width=device-width, 
 $this->registerMetaTag(['name' => 'description', 'content' => $this->params['meta_description'] ?? '']);
 $this->registerMetaTag(['name' => 'keywords', 'content' => $this->params['meta_keywords'] ?? '']);
 $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii::getAlias('@web/favicon.ico')]);
-
-$darkMode = Yii::$app->request->cookies->getValue('dark_mode', '0'); // Pega a preferência do cookie
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -29,7 +26,7 @@ $darkMode = Yii::$app->request->cookies->getValue('dark_mode', '0'); // Pega a p
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body class="d-flex flex-column h-100 <?= $darkMode == '1' ? 'dark-mode' : '' ?>">
+<body class="d-flex flex-column h-100">
 <?php $this->beginBody() ?>
 
 <header id="header">
@@ -58,13 +55,7 @@ $darkMode = Yii::$app->request->cookies->getValue('dark_mode', '0'); // Pega a p
                         ['class' => 'nav-link btn btn-link logout']
                     )
                     . Html::endForm()
-                    . '</li>',
-            '<li class="nav-item">'
-                . Html::a('Alternar Tema', '#', [
-                    'class' => 'nav-link',
-                    'id' => 'toggle-theme'
-                ])
-                . '</li>',
+                    . '</li>'
         ]
     ]);
     NavBar::end();
@@ -81,16 +72,6 @@ $darkMode = Yii::$app->request->cookies->getValue('dark_mode', '0'); // Pega a p
     </div>
 </main>
 
-<!-- <footer id="footer" class="mt-auto py-3 bg-light">
-    <div class="container">
-        <div class="row text-muted">
-            <div class="col-md-6 text-center text-md-start">sandrofpaula@gmail.com <?= date('Y') ?> | @sandrofpaula</div>
-            <div class="col-md-6 text-center text-md-end"><?= Yii::powered() ?></div>
-        </div>
-    </div>
-</footer> -->
-
-
 <footer id="footer" class="mt-auto py-3 bg-light">
     <div class="container">
         <div class="row text-muted">
@@ -99,40 +80,6 @@ $darkMode = Yii::$app->request->cookies->getValue('dark_mode', '0'); // Pega a p
         </div>
     </div>
 </footer>
-
-
-
-<?php
-$toggleThemeUrl = Url::to(['/site/toggle-theme']);
-$script = <<<JS
-$(document).ready(function() {
-    $('#toggle-theme').on('click', function(e) {
-        e.preventDefault();
-        console.log('Button clicked'); // Log para depuração
-        $.ajax({
-            url: '$toggleThemeUrl',
-            type: 'POST',
-            success: function(data) {
-                console.log('AJAX success:', data); // Log para depuração
-                if (data == '1') {
-                    $('body').addClass('dark-mode');
-                    $('#footer').removeClass('bg-light');
-                } else {
-                    $('body').removeClass('dark-mode');
-                    $('#footer').addClass('bg-light');
-                }
-            },
-            error: function(xhr, status, error) {
-                console.error('AJAX error:', error); // Log para depuração
-            }
-        });
-    });
-});
-JS;
-$this->registerJs($script);
-?>
-
-
 
 <?php $this->endBody() ?>
 </body>
