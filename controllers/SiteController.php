@@ -152,6 +152,10 @@ class SiteController extends Controller
     {
         return $this->render('/giiwizard/codigo-extra');
     }
+    public function actionBotaocopiar()
+    {
+        return $this->render('/giiwizard/botao-copiar');
+    }
 
     /**
      * Action to toggle the dark mode theme and save preference in a cookie.

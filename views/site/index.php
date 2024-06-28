@@ -24,11 +24,11 @@ $this->title = 'Gii Wizard!';
         <div class="row">
             <div class="col-lg-4 mb-5">
                 <h2>Sistema com Módulos</h2>
-                <p><?php echo Html::a('Gii Wizard para Sistema com Módulos', ['/site/commodule'], ['class' => 'btn btn-outline-secondary']);?></p>
+                <p><?php echo Html::a('Gii Wizard para Sistema com Módulos', ['/site/commodule'], ['class' => 'btn btn-outline-warning']);?></p>
                 
-                <p><?php echo Html::a('Gii Wizard para Sistema com Módulos (JSON)', ['/site/commodulejson'], ['class' => 'btn btn-outline-secondary']);?></p>
+                <p><?php echo Html::a('Gii Wizard para Sistema com Módulos (JSON)', ['/site/commodulejson'], ['class' => 'btn btn-outline-warning']);?></p>
                 
-                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#withModulesModal">
+                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#withModulesModal">
                 <i class="fas fa-info-circle"></i> Sistema Com Módulos
                 </button>
                 
@@ -37,18 +37,18 @@ $this->title = 'Gii Wizard!';
             <div class="col-lg-4 mb-5">
                 <h2>Sistema sem Módulos</h2>
 
-                <p><?php echo Html::a('Gii Wizard para Sistema sem Módulos', ['/site/semmodule'], ['class' => 'btn btn-outline-primary']);?></p>
+                <p><?php echo Html::a('Gii Wizard para Sistema sem Módulos', ['/site/semmodule'], ['class' => 'btn btn-outline-success']);?></p>
 
-                <p><?php echo Html::a('Gii Wizard para Sistema sem Módulos (JSON)', ['/site/semmodulejson'], ['class' => 'btn btn-outline-primary']);?></p>
+                <p><?php echo Html::a('Gii Wizard para Sistema sem Módulos (JSON)', ['/site/semmodulejson'], ['class' => 'btn btn-outline-success']);?></p>
                 
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#noModulesModal">
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#noModulesModal">
                 <i class="fas fa-info-circle"></i> Sistema Sem Módulos
                 </button>
             </div>
             <div class="col-lg-4 mb-5">
                 <h2>Código Extra</h2>
 
-                <p><?php echo Html::a('botão copiar', ['/site/codigoextra'], ['class' => 'btn btn-outline-primary']);?></p>
+                <p><?php echo Html::a('Código Extra', ['/site/codigoextra'], ['class' => 'btn btn-outline-primary']);?></p>
 
             </div>
         </div>
