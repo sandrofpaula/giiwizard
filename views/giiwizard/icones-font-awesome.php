@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
   <h1><?= Html::encode($this->title) ?></h1>
   <div id="flash-message" class="alert alert-primary"></div>
     <div class="alert alert-info">
-        <p>Inclua no <b>inicio</b> da folha .</p>
+        <p>Inclua no <b>inicio</b> da folha.</p>
         <div class="input-group mt-4">
             <input type="text" class="form-control" id="stylesheet-link-1" value='&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"&gt;' readonly>
             <div class="input-group-append">
@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
     <div class="alert alert-secondary">
-        <p>Inclua no <b>fim</b> da folha .</p>
+        <p>Inclua no <b>fim</b> da folha.</p>
         <div class="input-group mt-4">
             <input type="text" class="form-control" id="stylesheet-link-2" value='&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script&gt;' readonly>
             <div class="input-group-append">
