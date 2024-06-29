@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="bootstrap-colors-content">
         <div class="alert alert-warning">
-            Copia o Código do botão
+            <p>Copia o Código do botão</p>
             <button class="btn text-bg-primary p-3" onclick="copyButtonText(this)">primary</button>
             <button class="btn text-bg-secondary p-3" onclick="copyButtonText(this)">secondary</button>
             <button class="btn text-bg-success p-3" onclick="copyButtonText(this)">success</button>
@@ -44,7 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <br >
     <div class="bootstrap-colors-content">
         <div class="alert alert-success">
-            Copia o Value  do botão
+            <p>Copia o Value  do botão</p>
             <button class="btn text-bg-primary p-3" onclick="copyValueText(this)">primary</button>
             <button class="btn text-bg-secondary p-3" onclick="copyValueText(this)">secondary</button>
             <button class="btn text-bg-success p-3" onclick="copyValueText(this)">success</button>
