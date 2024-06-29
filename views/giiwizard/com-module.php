@@ -99,9 +99,9 @@ function updateResult() {
         createInputWithCopy('Selected Table:', selectedTable) +
         '<h1 class="modal-title"><span class="badge bg-warning text-dark">Model Generator</span></h1>' +
         createInputWithCopyAndToggle('Model Class Name:', rightPart) +
-        createInputWithCopyAndToggle('Model Class:', modelClass) +
         createInputWithCopy('Namespace:', namespace) +
         '<h1 class="modal-title"><span class="badge bg-success">CRUD Generator</span></h1>' +
+        createInputWithCopyAndToggle('Model Class:', modelClass) +
         createInputWithCopy('Search Model Class:', searchModelClass) +
         createInputWithCopy('Controller Class:', controllerClass) +
         createInputWithCopy('View Path:', viewPath);

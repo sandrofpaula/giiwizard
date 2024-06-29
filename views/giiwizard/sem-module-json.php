@@ -214,11 +214,11 @@ function updateResult() {
 
     var resultHtml = 
         '<h1 class="modal-title"><span class="badge bg-dark">Model Generator</span></h1>' +
-        createInputWithCopyAndToggle('Model Class Name:', rightPart) +
-        createInputWithCopyAndToggle('Model Class:', modelClass) +
-        createInputWithCopy('Namespace:', namespace) +
         createInputWithCopy('Selected Table:', selectedTable) +
+        createInputWithCopyAndToggle('Model Class Name:', rightPart) +
+        createInputWithCopy('Namespace:', namespace) +
         '<h1 class="modal-title"><span class="badge bg-warning text-dark">CRUD Generator</span></h1>' +
+        createInputWithCopyAndToggle('Model Class:', modelClass) +
         createInputWithCopy('Search Model Class:', searchModelClass) +
         createInputWithCopy('Controller Class:', controllerClass) +
         createInputWithCopy('View Path:', viewPath);
