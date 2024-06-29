@@ -16,7 +16,7 @@ $this->title = 'Gii Wizard!';
 
         <!-- <p class="lead">You have successfully created your Yii-powered application.</p> -->
 
-        <p><a class="btn btn-lg btn-success" href="https://www.yiiframework.com">Comece com o Yii</a></p>
+        <p><a class="btn btn-lg btn-success" target="_blank" href="https://www.yiiframework.com">Comece com o Yii</a></p>
     </div>
 
     <div class="body-content">

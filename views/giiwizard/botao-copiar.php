@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 $this->title = 'Botão copiar';
+$this->params['breadcrumbs'][] = ['label' => 'Código Extra', 'url' => ['/site/codigoextra']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

@@ -19,8 +19,9 @@ $this->registerMetaTag(['name' => 'viewport', 'content' => 'width=device-width, 
 $this->registerMetaTag(['name' => 'description', 'content' => $this->params['meta_description'] ?? '']);
 $this->registerMetaTag(['name' => 'keywords', 'content' => $this->params['meta_keywords'] ?? '']);
 $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii::getAlias('@web/favicon.ico')]);
-
+///<!-- dark-mode -->
 $darkMode = Yii::$app->request->cookies->getValue('dark_mode', '0'); // Pega a preferência do cookie
+///<!-- fim - dark-mode -->
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -29,7 +30,9 @@ $darkMode = Yii::$app->request->cookies->getValue('dark_mode', '0'); // Pega a p
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
+<!-- dark-mode -->
 <body class="d-flex flex-column h-100 <?= $darkMode == '1' ? 'dark-mode' : '' ?>">
+<!-- fim-- dark-mode -->
 <?php $this->beginBody() ?>
 
 <header id="header">
@@ -43,22 +46,52 @@ $darkMode = Yii::$app->request->cookies->getValue('dark_mode', '0'); // Pega a p
         'options' => ['class' => 'navbar-nav'],
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'Com Module', 'url' => ['/site/commodule']],
-            ['label' => 'Sem Module', 'url' => ['/site/semmodule']],
-            ['label' => 'Com Module JSON', 'url' => ['/site/commodulejson']],
-            ['label' => 'Sem Module JSON', 'url' => ['/site/semmodulejson']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest
-                ? ['label' => 'Login', 'url' => ['/site/login']]
-                : '<li class="nav-item">'
-                    . Html::beginForm(['/site/logout'])
-                    . Html::submitButton(
-                        'Logout (' . Yii::$app->user->identity->username . ')',
-                        ['class' => 'nav-link btn btn-link logout']
-                    )
-                    . Html::endForm()
-                    . '</li>',
+            // ['label' => 'Com Module', 'url' => ['/site/commodule']],
+            // ['label' => 'Sem Module', 'url' => ['/site/semmodule']],
+
+
+            ['label' => 'SGdb', 'url' => [''],
+                'items' => [
+                    ['label' => 'Com Module', 'url' => ['/site/commodule']],
+                    ['label' => 'Sem Module', 'url' => ['/site/semmodule']],
+                ]
+            ],
+
+
+            ['label' => 'JSON', 'url' => [''],
+                'items' => [
+                    ['label' => 'Com Module JSON', 'url' => ['/site/commodulejson']],
+                    ['label' => 'Sem Module JSON', 'url' => ['/site/semmodulejson']],
+                ]
+            ],
+
+
+
+            //['label' => 'Com Module JSON', 'url' => ['/site/commodulejson']],
+            //['label' => 'Sem Module JSON', 'url' => ['/site/semmodulejson']],
+            //['label' => 'Código Extra', 'url' => ['/site/codigoextra']],
+
+            ['label' => 'Extra', 'url' => [''],
+                'items' => [
+                    ['label' => 'Código Extra', 'url' => ['/site/codigoextra']],
+                    ['label' => 'botão copia', 'url' => ['/site/botao-copiar']],
+                    ['label' => 'Bootstrap Icons', 'url' => ['/site/icones-bootstrap']],
+                    ['label' => 'Font Awesome Icons', 'url' => ['/site/icones-font-awesome']],
+                ]
+            ],
+
+            // ['label' => 'About', 'url' => ['/site/about']],
+            // ['label' => 'Contact', 'url' => ['/site/contact']],
+            // Yii::$app->user->isGuest
+            //     ? ['label' => 'Login', 'url' => ['/site/login']]
+            //     : '<li class="nav-item">'
+            //         . Html::beginForm(['/site/logout'])
+            //         . Html::submitButton(
+            //             'Logout (' . Yii::$app->user->identity->username . ')',
+            //             ['class' => 'nav-link btn btn-link logout']
+            //         )
+            //         . Html::endForm()
+            //         . '</li>',
             '<li class="nav-item">'
                 . Html::a('Alternar Tema', '#', [
                     'class' => 'nav-link',
