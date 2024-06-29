@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
         <div class="input-group mt-4">
-            <input type="text" class="form-control" id="stylesheet-link-3" value='&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"&gt;' readonly>
+            <input type="text" class="form-control" id="stylesheet-link-3" value='&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script&gt;' readonly>
             <div class="input-group-append">
                 <button class="btn btn-outline-secondary copy-button" type="button" onclick="copyCode2('stylesheet-link-3')">Copiar</button>
             </div>
