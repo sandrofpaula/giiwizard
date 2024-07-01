@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?php for ($i = 1; $i <=5; $i++): ?>
+    <?php for ($i = 1; $i <=3; $i++): ?>
         <div class="form-group">
             <label for="campo_avulso_<?= $i ?>">Campo Avulso <?= $i ?></label>
             <div class="input-group">
@@ -53,11 +53,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php endfor; ?>
 
     <div class="form-group">
-        <label for="campo_avulso_x">campo_avulso_x</label>
+        <label for="campo_avulso_z">campo_avulso_z</label>
         <div class="input-group">
-            <input type="text" id="campo_avulso_x" class="form-control" name="campo_avulso_x" maxlength="true">
+            <input type="text" id="campo_avulso_z" class="form-control"  maxlength="true">
             <div class="input-group-append">
-                <button type="button" class="copy-button btn btn-success" data-target="campo_avulso_x">
+                <button type="button" class="copy-button btn btn-success" data-target="campo_avulso_z">
                     <i class="fa fa-copy"></i> Copiar
                 </button>
             </div>

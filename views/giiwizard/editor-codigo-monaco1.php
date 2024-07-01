@@ -1,61 +1,19 @@
 <?php
-
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
 
+/* @var $this yii\web\View */
 $this->title = 'Tutorial e Editor de Código';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.30.1/min/vs/loader.min.js"></script> -->
-<div class="site-about">
+<div class="site-index">
     <h1><?= Html::encode($this->title) ?></h1>
-<style>
-
-        body {
-            font-family: Arial, sans-serif; /* Define a fonte padrão do corpo do documento */
-            margin: 20px; /* Adiciona uma margem de 20 pixels ao redor do corpo */
-        }
-        h1, h2, h3 {
-            color: #333; /* Define a cor do texto dos cabeçalhos */
-        }
-        pre {
-            background-color: #f4f4f4; /* Define a cor de fundo dos elementos <pre> */
-            padding: 10px; /* Adiciona preenchimento interno de 10 pixels */
-            border: 1px solid #ddd; /* Define uma borda sólida de 1 pixel com cor cinza claro */
-            overflow-x: auto; /* Adiciona rolagem horizontal se o conteúdo exceder a largura do elemento */
-        }
-        .editor-section {
-            margin-bottom: 40px; /* Adiciona uma margem inferior de 40 pixels */
-        }
-        .editor {
-            width: 100%; /* Define a largura do editor para 100% do contêiner pai */
-            height: 300px; /* Define a altura do editor para 300 pixels */
-            border: 1px solid #ddd; /* Define uma borda sólida de 1 pixel com cor cinza claro */
-        }
-        .copy-button {
-            margin-top: 10px; /* Adiciona uma margem superior de 10 pixels */
-        }
-        #flash-message {
-            display: none; /* Inicialmente, oculta o elemento */
-            /* background-color: #4CAF50; */ /* Define a cor de fundo para verde */
-            /* color: white; */ /* Define a cor do texto para branco */
-            text-align: center; /* Alinha o texto ao centro */
-            padding: 10px; /* Adiciona preenchimento interno de 10 pixels */
-            position: fixed; /* Posiciona o elemento de forma fixa em relação à janela de visualização */
-            top: 140px; /* Posiciona o elemento a 140 pixels do topo da janela */
-            right:500px; /* Posiciona o elemento a 500 pixels da borda direita da janela */
-            z-index: 1000; /* Define a ordem de empilhamento do elemento, garantindo que ele fique acima de outros elementos */
-        }
-    </style>
-
     <p>Bem-vindo ao tutorial! Aqui você encontrará exemplos de códigos em várias linguagens de programação e editores interativos para testar seus próprios códigos.</p>
 
     <div class="editor-section">
         <h2>PHP</h2>
         <p>Este é um exemplo simples de um código PHP:</p>
         <div id="editor-php" class="editor"></div>
-        <button type="button" class="copy-button btn btn-warning" data-target="editor-php">
+        <button type="button" class="copy-button" data-target="editor-php">
             <i class="fa fa-copy"></i> Copiar
         </button>
     </div>
@@ -64,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <h2>JavaScript</h2>
         <p>Este é um exemplo simples de um código JavaScript:</p>
         <div id="editor-js" class="editor"></div>
-        <button type="button" class="copy-button btn btn-warning" data-target="editor-js">
+        <button type="button" class="copy-button" data-target="editor-js">
             <i class="fa fa-copy"></i> Copiar
         </button>
     </div>
@@ -73,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <h2>SQL</h2>
         <p>Este é um exemplo simples de um código SQL:</p>
         <div id="editor-sql" class="editor"></div>
-        <button type="button" class="copy-button btn btn-warning" data-target="editor-sql">
+        <button type="button" class="copy-button" data-target="editor-sql">
             <i class="fa fa-copy"></i> Copiar
         </button>
     </div>
@@ -82,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <h2>Node.js</h2>
         <p>Este é um exemplo simples de um código Node.js:</p>
         <div id="editor-node" class="editor"></div>
-        <button type="button" class="copy-button btn btn-warning" data-target="editor-node">
+        <button type="button" class="copy-button" data-target="editor-node">
             <i class="fa fa-copy"></i> Copiar
         </button>
     </div>
@@ -91,7 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <h2>PL/SQL</h2>
         <p>Este é um exemplo simples de um código PL/SQL:</p>
         <div id="editor-plsql" class="editor"></div>
-        <button type="button" class="copy-button btn btn-warning" data-target="editor-plsql">
+        <button type="button" class="copy-button" data-target="editor-plsql">
             <i class="fa fa-copy"></i> Copiar
         </button>
     </div>
@@ -100,13 +58,50 @@ $this->params['breadcrumbs'][] = $this->title;
         <h2>Python</h2>
         <p>Este é um exemplo simples de um código Python:</p>
         <div id="editor-python" class="editor"></div>
-        <button type="button" class="copy-button btn btn-warning" data-target="editor-python">
+        <button type="button" class="copy-button" data-target="editor-python">
             <i class="fa fa-copy"></i> Copiar
         </button>
     </div>
 
-    <!-- <div id="flash-message"></div> -->
-    <div id="flash-message" class="alert alert-warning" role="alert"> </div>
+    <div id="flash-message"></div> <!-- Elemento para exibir mensagens de confirmação -->
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+            overflow-x: auto;
+        }
+        .editor-section {
+            margin-bottom: 40px;
+        }
+        .editor {
+            width: 100%;
+            height: 300px;
+            border: 1px solid #ddd;
+        }
+        .copy-button {
+            margin-top: 10px;
+        }
+        #flash-message {
+            display: none;
+            background-color: #4CAF50; /* Define a cor de fundo para verde */
+            color: white; /* Define a cor do texto para branco */
+            text-align: center; /* Alinha o texto ao centro */
+            padding: 10px; /* Adiciona preenchimento interno de 10 pixels */
+            position: fixed; /* Posiciona o elemento de forma fixa em relação à janela de visualização */
+            top: 140px; /* Posiciona o elemento a 140 pixels do topo da janela */
+            right: 110px; /* Posiciona o elemento a 110 pixels da borda direita da janela */
+            z-index: 1000; /* Define a ordem de empilhamento do elemento, garantindo que ele fique acima de outros elementos */
+        }
+    </style>
 
     <script>
         function loadMonacoEditor(callback) {
@@ -226,46 +221,45 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 // Criando os editores como somente leitura
                 var editorPHP = monaco.editor.create(document.getElementById('editor-php'), {
-                    // value: '<' + '?php\n// Digite seu código PHP aqui...\n?>',
-                    value: '/* Digite seu código PHP aqui...*/',
+                    value: '<' + '?php\n// Digite seu código PHP aqui...\n?>',
                     language: 'php',
                     theme: 'myCustomTheme',
-                   // readOnly: true, //bloqueia a edição
+                    readOnly: true
                 });
 
                 var editorJS = monaco.editor.create(document.getElementById('editor-js'), {
                     value: '// Digite seu código JavaScript aqui...',
                     language: 'javascript',
                     theme: 'myCustomTheme',
-                   // readOnly: true, //bloqueia a edição
+                    readOnly: true
                 });
 
                 var editorSQL = monaco.editor.create(document.getElementById('editor-sql'), {
                     value: '-- Digite seu código SQL aqui...',
                     language: 'sql',
                     theme: 'myCustomTheme',
-                   // readOnly: true, //bloqueia a edição
+                    readOnly: true
                 });
 
                 var editorNode = monaco.editor.create(document.getElementById('editor-node'), {
                     value: '// Digite seu código Node.js aqui...',
                     language: 'javascript',
                     theme: 'myCustomTheme',
-                   // readOnly: true, //bloqueia a edição
+                    readOnly: true
                 });
 
                 var editorPLSQL = monaco.editor.create(document.getElementById('editor-plsql'), {
                     value: '-- Digite seu código PL/SQL aqui...',
                     language: 'plsql',
                     theme: 'myCustomTheme',
-                   // readOnly: true, //bloqueia a edição
+                    readOnly: true
                 });
 
                 var editorPython = monaco.editor.create(document.getElementById('editor-python'), {
                     value: '# Digite seu código Python aqui...',
                     language: 'python',
                     theme: 'myCustomTheme',
-                   // readOnly: true, //bloqueia a edição
+                    readOnly: true
                 });
 
                 // Função para copiar o conteúdo do editor
@@ -278,46 +272,46 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
 
                 // Adicionando o evento de clique aos botões de cópia
-                document.querySelector
                 document.querySelectorAll('.copy-button').forEach(button => {
-                        button.addEventListener('click', function() {
-                            var targetId = this.getAttribute('data-target');
-                            var targetEditor;
-                            switch (targetId) {
-                                case 'editor-php':
-                                    targetEditor = editorPHP;
-                                    break;
-                                case 'editor-js':
-                                    targetEditor = editorJS;
-                                    break;
-                                case 'editor-sql':
-                                    targetEditor = editorSQL;
-                                    break;
-                                case 'editor-node':
-                                    targetEditor = editorNode;
-                                    break;
-                                case 'editor-plsql':
-                                    targetEditor = editorPLSQL;
-                                    break;
-                                case 'editor-python':
-                                    targetEditor = editorPython;
-                                    break;
-                            }
-                            copyContent(targetEditor);
-                        });
+                    button.addEventListener('click', function() {
+                        var targetId = this.getAttribute('data-target');
+                        var targetEditor;
+                        switch (targetId) {
+                            case 'editor-php':
+                                targetEditor = editorPHP;
+                                break;
+                            case 'editor-js':
+                                targetEditor = editorJS;
+                                break;
+                            case 'editor-sql':
+                                targetEditor = editorSQL;
+                                break;
+                            case 'editor-node':
+                                targetEditor = editorNode;
+                                break;
+                            case 'editor-plsql':
+                                targetEditor = editorPLSQL;
+                                break;
+                            case 'editor-python':
+                                targetEditor = editorPython;
+                                break;
+                        }
+                        copyContent(targetEditor);
                     });
-
-                    // Função para exibir mensagem de cópia
-                    function showFlashMessage(message) {
-                        var flashMessage = document.getElementById('flash-message');
-                        flashMessage.innerHTML = message;
-                        flashMessage.style.display = 'block';
-
-                        setTimeout(function() {
-                            flashMessage.style.display = 'none';
-                        }, 3000); // Esconde a mensagem após 3 segundos
-                    }
                 });
-            });
-        </script>
 
+                // Função para exibir mensagem de cópia
+                function showFlashMessage(message) {
+                    var flashMessage = document.getElementById('flash-message');
+                    flashMessage.innerHTML = message;
+                    flashMessage.style.display = 'block';
+
+                    setTimeout(function() {
+                        flashMessage.style.display = 'none';
+                    }, 3000); // Esconde a mensagem após 3 segundos
+                }
+            });
+        });
+    </script>
+</body>
+</html>

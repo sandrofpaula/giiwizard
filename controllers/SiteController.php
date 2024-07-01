@@ -175,25 +175,117 @@ class SiteController extends Controller
      * @return Response
      */
 
+   
+
     public function actionToggleTheme()
     {
-        Yii::$app->response->format = Response::FORMAT_JSON;
-        $cookies = Yii::$app->response->cookies;
+        $themeMode = Yii::$app->request->cookies->getValue('theme_mode', '0');
+        if ($themeMode == '0') {
+            $newThemeMode = '1'; // Dark Mode
+        } elseif ($themeMode == '1') {
+            $newThemeMode = '2'; // High Contrast
+        } else {
+            $newThemeMode = '0'; // Light Mode
+        }
 
-        // Obtém o valor atual do cookie
-        $currentValue = Yii::$app->request->cookies->getValue('dark_mode', '0');
-        // Alterna o valor
-        $newValue = $currentValue == '1' ? '0' : '1';
-
-        // Define o cookie
-        $cookies->add(new Cookie([
-            'name' => 'dark_mode',
-            'value' => $newValue,
-            'expire' => time() + 86400 * 365, // 1 ano de validade
+        Yii::$app->response->cookies->add(new \yii\web\Cookie([
+            'name' => 'theme_mode',
+            'value' => $newThemeMode,
+            //'expire' => time() + 86400, // 1 dia
+            //'expire' => time() + 86400 * 30, // 1 mês
+            'expire' => time() + 86400 * 90, // 3 meses
+            //'expire' => time() + 86400 * 180, // 6 meses
+            //'expire' => time() + 86400 * 365, // 1 year
         ]));
 
-        return $newValue;
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        return $newThemeMode;
     }
+    /*
+    Claro, vamos detalhar a função `actionToggleTheme` do controlador no Yii2.
+
+### Contexto
+
+Esta função é uma ação de um controlador no framework Yii2. Ela é chamada quando o usuário deseja alternar entre diferentes modos de tema (claro, escuro e alto contraste) e tem a responsabilidade de atualizar o estado do tema no cookie do navegador e retornar o novo estado.
+
+### Explicação Detalhada
+
+1. **Obtendo o Estado Atual do Tema**
+
+    ```php
+    $themeMode = Yii::$app->request->cookies->getValue('theme_mode', '0');
+    ```
+
+    - **Descrição:** Esta linha obtém o valor atual do cookie `theme_mode` que armazena o modo de tema do usuário.
+    - **Função:** `Yii::$app->request->cookies->getValue('theme_mode', '0')`
+        - Verifica se o cookie `theme_mode` existe.
+        - Se o cookie existir, ele retorna seu valor.
+        - Se o cookie não existir, ele retorna `'0'`, que representa o modo claro por padrão.
+
+2. **Alternando o Modo de Tema**
+
+    ```php
+    if ($themeMode == '0') {
+        $newThemeMode = '1'; // Dark Mode
+    } elseif ($themeMode == '1') {
+        $newThemeMode = '2'; // High Contrast
+    } else {
+        $newThemeMode = '0'; // Light Mode
+    }
+    ```
+
+    - **Descrição:** Este bloco condicional determina o próximo estado do tema com base no valor atual.
+    - **Funcionamento:**
+        - Se o tema atual for `'0'` (modo claro), ele alterna para `'1'` (modo escuro).
+        - Se o tema atual for `'1'` (modo escuro), ele alterna para `'2'` (modo de alto contraste).
+        - Se o tema atual for qualquer outro valor (assumido como `'2'`), ele alterna para `'0'` (modo claro).
+
+3. **Atualizando o Cookie com o Novo Estado do Tema**
+
+    ```php
+    Yii::$app->response->cookies->add(new \yii\web\Cookie([
+        'name' => 'theme_mode',
+        'value' => $newThemeMode,
+        'expire' => time() + 86400 * 365, // 1 year
+    ]));
+    ```
+
+    - **Descrição:** Este bloco cria e adiciona um novo cookie com o estado atualizado do tema.
+    - **Detalhamento:**
+        - `new \yii\web\Cookie([...])`: Cria um novo objeto de cookie com as seguintes propriedades:
+            - **`name`:** O nome do cookie é `'theme_mode'`.
+            - **`value`:** O valor do cookie é `$newThemeMode`, que foi determinado na etapa anterior.
+            - **`expire`:** Define a data de expiração do cookie para 1 ano a partir do momento atual (`time() + 86400 * 365`), onde `86400` é o número de segundos em um dia.
+
+    - **Função:** `Yii::$app->response->cookies->add(...)`
+        - Adiciona o cookie recém-criado à resposta HTTP, que será enviada ao navegador do usuário.
+
+4. **Definindo o Formato da Resposta e Retornando o Novo Estado do Tema**
+
+    ```php
+    Yii::$app->response->format = Response::FORMAT_JSON;
+    return $newThemeMode;
+    ```
+
+    - **Descrição:** Configura o formato da resposta e retorna o novo estado do tema.
+    - **Detalhamento:**
+        - `Yii::$app->response->format = Response::FORMAT_JSON;`
+            - Define o formato da resposta como JSON. Isso indica que a resposta será um objeto JSON em vez de HTML ou outro formato.
+        - `return $newThemeMode;`
+            - Retorna o novo estado do tema (`$newThemeMode`) como a resposta da função.
+            - O valor retornado será enviado ao navegador como parte da resposta JSON.
+
+### Resumo
+
+A função `actionToggleTheme`:
+1. Obtém o estado atual do tema a partir de um cookie.
+2. Determina o próximo estado do tema com base no estado atual.
+3. Atualiza o cookie com o novo estado do tema.
+4. Define o formato da resposta como JSON.
+5. Retorna o novo estado do tema ao navegador.
+
+Essa função permite que o modo de tema seja alternado e persistido entre as páginas, garantindo uma experiência de usuário consistente.
+    */
     public function getIconNames()
     {
         return [

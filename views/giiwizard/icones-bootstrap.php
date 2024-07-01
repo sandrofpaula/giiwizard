@@ -105,13 +105,14 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php foreach ($iconNames as $iconName): ?>
                 <li class="col mb-4" data-name="<?= $iconName ?>" data-tags="icon" data-categories="icons">
                     <a class="d-block text-body-emphasis text-decoration-none" href="javascript:void(0);" onclick="copyIconCode('<i class=\'bi bi-<?= $iconName ?>\'></i>')">
-                        <div class="px-3 py-4 mb-2 bg-body-secondary text-center rounded">
+                        <div class="px-3 py-4 mb-2 text-center rounded">
                             <h3> <i class="bi bi-<?= $iconName ?>"></i></h3>
                         </div>
-                        <div class="name text-muted text-decoration-none text-center pt-1"><?= $iconName ?></div>
+                        <div class="name text-decoration-none text-center pt-1"><?= $iconName ?></div>
                     </a>
                 </li>
             <?php endforeach; ?>
+
         </ul>
     </div>
     
