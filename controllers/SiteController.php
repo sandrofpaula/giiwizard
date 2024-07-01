@@ -164,6 +164,10 @@ class SiteController extends Controller
     {
         return $this->render('/giiwizard/icones-font-awesome');
     }
+    public function actionEditorCodigoMonaco()
+    {
+        return $this->render('/giiwizard/editor-codigo-monaco');
+    }
 
     /**
      * Action to toggle the dark mode theme and save preference in a cookie.

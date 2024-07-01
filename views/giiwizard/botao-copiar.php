@@ -52,6 +52,18 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     <?php endfor; ?>
 
+    <div class="form-group">
+        <label for="campo_avulso_x">campo_avulso_x</label>
+        <div class="input-group">
+            <input type="text" id="campo_avulso_x" class="form-control" name="campo_avulso_x" maxlength="true">
+            <div class="input-group-append">
+                <button type="button" class="copy-button btn btn-success" data-target="campo_avulso_x">
+                    <i class="fa fa-copy"></i> Copiar
+                </button>
+            </div>
+        </div>
+    </div>
+
 
     <div class="form-group">
         <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
@@ -86,6 +98,7 @@ $this->params['breadcrumbs'][] = $this->title;
         document.execCommand('copy');
         
         showFlashMessage('Copiado: ' + targetInput.value);
+        //alert('Copiado: ' + targetInput.valu);
     });
 
     function showFlashMessage(message) {

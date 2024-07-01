@@ -77,6 +77,7 @@ $darkMode = Yii::$app->request->cookies->getValue('dark_mode', '0'); // Pega a p
                     ['label' => 'botão copia', 'url' => ['/site/botao-copiar']],
                     ['label' => 'Bootstrap Icons', 'url' => ['/site/icones-bootstrap']],
                     ['label' => 'Font Awesome Icons', 'url' => ['/site/icones-font-awesome']],
+                    ['label' => 'Editor Código Monaco', 'url' => ['/site/editor-codigo-monaco']],
                 ]
             ],
 
